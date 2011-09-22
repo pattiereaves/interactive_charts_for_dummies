@@ -22,13 +22,20 @@ $(document).ready(function(){
 		var chartColor	 	= $('#chart-color').val();
 		var chartBarColor	= $('#bar-color').val();
 
-		var chartData		= '';
+		var chartData		= '25,4,15,32,8,9';
+
+
+
+
+
+
+
 		var chartLabels		= '';
 
 		var RenderedOutput 	= 'thisChartType: ' + thisChartType + ' chartTitle: ' + chartTitle + ' chartTitleSize:' + chartTitleSize + ' chartTitleColor:' + chartTitleColor + ' chartWidth:' + chartWidth + ' chartHeight:' + chartHeight + ' chartColor:' + chartColor + ' chartCanvasColor : ' + chartCanvasColor + ' chartBarColor: ' + chartBarColor;
 
 
-		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chxt=x%2Cy&chxr&chbh=a%2C3&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize ;
+		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize ;
 
 		$("#chartPreview").attr("src",chartPreviewSRC);
 
