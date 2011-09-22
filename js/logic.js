@@ -14,7 +14,6 @@ function convertStringToJSON(string) {
       re = /^[0-9]*$/;
       if (!re.test(stripped_number)) {
         var adjusted_index = parseInt(index) + 1;
-        //alert('Row ' + adjusted_index + ', column two contains an invalid character. Only numbers are allowed in column two. Please fix and resubmit.');
         $('#data-error').html('Row ' + adjusted_index + ', column two contains an invalid character. Only numbers are allowed in column two. Please fix and resubmit.');
       } else {
         formatted_data[index] = [split_row[0], stripped_number];
