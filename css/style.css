@@ -49,7 +49,7 @@ textarea {
 width: 100%;
 font-family: Consolas, "Monaco";
 font-size: 12px;
-height: 200px;
+height: 80px;
 padding: 10px;
 }
 
@@ -59,16 +59,20 @@ input[type="text"] {
 	font-size: 14px;
 	width:100%;
 }
-.title input {
+input#title {
 font-size: 28px;
 font-weight: bold;
 }
-input#width, input#height {
+input#chartwidth, input#chartheight {
 	width:33%;
 }
-input#width  {
+input#chartwidth  {
 	margin-right: 5%;
 }
+input.colorpicker {
+	width:30%;
+}
+
 
 /**************************************/
 /*               FOOTER               */

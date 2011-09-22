@@ -26,26 +26,33 @@
 <body>
   <div class="container">
   	<div id="header" class="span-24 last">
-        <h1>Interactive Charts for Dummies | Hack Day Project Sept. 22, 2011</h1>
+        <h1>Interactive Bar Charts for Dummies | Hack Day Project Sept. 22, 2011</h1>
         <p>Convert your Excel data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html">simple google interactive chart</a>. A project for Hacks/Hackers Hack Day 2011.</p> 
     </div><!-- end #header -->
     
    	<div class="span-24 last">
     
         <div class="title" name="title" onfocus="" onkeyup="">
-			<label for="title">Title</label>
-			<input id="title" type="text" size="40" value="Your title here">
+			<label for="title"></label>
+			<input id="title" type="text" size="40" value="Name your bar chart">
 			<label for="titlesize">Title size:</label>  
 			<select id="titlesize"><option>Option 01</option><option>Option 02</option></select>
 			<label for="titlecolor">Title color:</label>  
-			<select id="titlecolor"><option>Option 01</option><option>Option 02</option></select>
+			<input type="text" size="40" name="bar-color" class="colorpicker"></input>	
 		</div>
 	</div>
 
     <div class="span-11 colborder">
+    
+    <h2>Data <span class="quiet">Copy &amp; paste your Excel date here</span></h2>
+	<textarea id="data" class="fullwidth"></textarea>
+
+    
+    
+    <h2>Chart options</h2>
 	    <div class="type"  onfocus="" onkeyup="">
 			<h4>Type</h4>
-			<div><input type="radio" name="charttype" value="h" /> Horizontal <input type="radio" name="charttype" value="v" /> Vertical </div>
+			<div><input type="radio" name="charttype" value="h" /> <img src="images/hori-type.png" width="16" height="12"> Horizontal <input type="radio" name="charttype" value="v" /> <img src="images/vert-type.png" width="16" height="12"> Vertical </div>
 		</div>	
 
         <div class="size" id="size" name="size" onfocus="" onkeyup="">
@@ -59,10 +66,10 @@
 		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
 			<h4>Color</h4>
 			<label for="canvas-color">Canvas background color</label>
-			<input type="text" size="40" name="canvas-color" class="colorpicker"></input>
+			<input type="text" size="40" name="canvas-color" class="colorpicker"></input><br/>
 
 			<label for="chart-color">Chart background color</label>
-			<input type="text" size="40" name="chart-color" class="colorpicker"></input>
+			<input type="text" size="40" name="chart-color" class="colorpicker"></input><br/>
 
 			<label for="bar-color">Bar color</label>
 			<input type="text" size="40" name="bar-color" class="colorpicker"></input>	
@@ -70,19 +77,26 @@
 	</div>
 	
 	<div class="span-12 last">
-		<h2>Data <span class="quiet">Copy &amp; paste your Excel date here</span></h2>
-			<textarea id="data" class="fullwidth"></textarea>
 
-	</div>  
-    
-    
-    <div class="span-24 last">
+		<h2>Preview</h2>
+		
+		<div> 
+		PREVIEW GOES HERE
+		</div>
+
+
 		<div class="autoMargin">
 			<h2>Embed code <span class="quiet">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
 			<br>
 			<textarea id="codeOutput" class="fullwidth"></textarea>
 		</div>
-    </div>
+
+
+	</div>  
+    
+    
+    <div class="span-24 last">
+	    </div>
     
     
     
