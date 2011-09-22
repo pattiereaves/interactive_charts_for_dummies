@@ -59,7 +59,16 @@ input[type="text"] {
 	font-size: 14px;
 	width:100%;
 }
-
+.title input {
+font-size: 28px;
+font-weight: bold;
+}
+input#width, input#height {
+	width:33%;
+}
+input#width  {
+	margin-right: 5%;
+}
 
 /**************************************/
 /*               FOOTER               */
