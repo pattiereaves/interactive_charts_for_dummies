@@ -14,6 +14,12 @@
   <![endif]-->
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
   <script src="js/jquery-1.6.4.min.js"></script>
+  <script src="js/jquery.wheelcolorpicker.min.js"></script>
+  <script type='text/javascript'>
+	$(function() {
+		$('.colorpicker').wheelColorPicker({dir: 'images'});
+	});
+	</script>
 </head>
 
 <body>
@@ -34,10 +40,7 @@
 			<select id="titlecolor"><option>Option 01</option><option>Option 02</option></select>
 		</div>
 	</div>
-	
-	
 
-  
     <div class="span-11 colborder">
 	    <div class="type"  onfocus="" onkeyup="">
 			<h4>Type</h4>
@@ -54,7 +57,14 @@
 		
 		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
 			<h4>Color</h4>
-			
+			<label for="canvas-color">Canvas background color</label>
+			<input type="text" size="40" name="canvas-color" class="colorpicker"></input>
+
+			<label for="chart-color">Chart background color</label>
+			<input type="text" size="40" name="chart-color" class="colorpicker"></input>
+
+			<label for="bar-color">Bar color</label>
+			<input type="text" size="40" name="bar-color" class="colorpicker"></input>	
 		</div>    
 	</div>
 	
