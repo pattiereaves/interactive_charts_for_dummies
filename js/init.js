@@ -32,10 +32,13 @@ $(document).ready(function(){
 
 		var chartLabels		= '';
 
-		var RenderedOutput 	= 'thisChartType: ' + thisChartType + ' chartTitle: ' + chartTitle + ' chartTitleSize:' + chartTitleSize + ' chartTitleColor:' + chartTitleColor + ' chartWidth:' + chartWidth + ' chartHeight:' + chartHeight + ' chartColor:' + chartColor + ' chartCanvasColor : ' + chartCanvasColor + ' chartBarColor: ' + chartBarColor;
+		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize + '&chf=bg,s,' + chartCanvasColor + '|c,s,' + chartColor;
+
+		//var RenderedOutput	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize ;
 
 
-		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize ;
+		var RenderedOutput 	= '<img src="' + chartPreviewSRC + '" alt="' + chartTitle + '" title="' + chartTitle + '" />';
+
 
 		$("#chartPreview").attr("src",chartPreviewSRC);
 
