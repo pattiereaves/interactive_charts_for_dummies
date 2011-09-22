@@ -50,7 +50,7 @@
 				<option value="18">18 px</option>
 			</select>
 			<label for="titlecolor">Title color:</label>  
-			<input type="text" size="40" name="title-color" class="title-colorpicker colorpicker"></input>	
+			<input type="text" size="40" name="title-color" id="title-color" class="title-colorpicker colorpicker"></input>	
 		</div>
 	</div>
 
@@ -81,13 +81,13 @@
 		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
 			<h4>Color</h4>
 			<label for="canvas-color">Canvas background color</label>
-			<input type="text" size="40" name="canvas-color" class="colorpicker"></input><br/>
+			<input type="text" size="40" id="canvas-color" name="canvas-color" class="colorpicker" value="ffffff"></input><br/>
 
 			<label for="chart-color">Chart background color</label>
-			<input type="text" size="40" name="chart-color" class="colorpicker"></input><br/>
+			<input type="text" size="40" id="chart-color" name="chart-color" class="colorpicker"></input><br/>
 
 			<label for="bar-color">Bar color</label>
-			<input type="text" size="40" name="bar-color" class="bar-colorpicker colorpicker"></input>	
+			<input type="text" size="40" id="bar-color" name="bar-color" class="bar-colorpicker colorpicker"></input>	
 		</div>
 		
 		<div class="legend" id="chartlegend" name="chartlegend" onfocus="" onkeyup="">
@@ -100,9 +100,6 @@
 				<option value="bottom">Bottom</option>
 			</select>	
 		</div>
-		
-				
-		
 		
 	</div>
 	

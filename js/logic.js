@@ -20,10 +20,30 @@ function convertStringToJSON(string) {
       }
     }
   }
+
+return formatted_data;
 }
 
 function getData() {
-	var data_value;
+	
 	data_value = $('#data').val();
-	convertStringToJSON(data_value);
+	cleaned_data = convertStringToJSON(data_value);
+	row1 = stringToArray(cleaned_data, 0);
+	row2 = stringToArray(cleaned_data, 1);
+
+	$('input[name=row1data]').val(row1);
+	$('input[name=row2data]').val(row2);
+	
+	
+}
+
+function stringToArray(inputArray, row_choice) {
+	var row;
+	for(i=0; i < inputArray.length; i++) {
+		row += inputArray[i][row_choice];
+		if((i+1) < inputArray.length) {
+			row += ',';
+		} 
+	}
+	return row;
 }
