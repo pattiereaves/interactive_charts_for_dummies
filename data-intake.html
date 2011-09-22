@@ -1,28 +1,11 @@
 <html>
 <head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="charts/interactive_charts_for_dummies/js/logic.js"></script>
 </head>
 <body>
-<script type="text/javascript">
-var string_rows;
-$(document).ready(function() {
-  var input_text;
-  $('#example-form').submit(function() {
-    input_text = document.getElementById('example-form').getElementsByClassName('example-ta')[0].value;
-    //alert(input_text);
-    convertStringToJSON(input_text);
-    return false;
-  });
-});
-
-function convertStringToJSON(string) {
-  string_rows = string.split('\v');
-  console.log(string_rows);
-}
-
-</script>
 <form id="example-form" name="example-form">
-    <input class="example-ta" type="textarea" cols="50" rows="20" />
+    <textarea class="example-ta" type="textarea" cols="50" rows="20"></textarea>
     <input type="submit" value="Submit" />
 </form>
 </body>

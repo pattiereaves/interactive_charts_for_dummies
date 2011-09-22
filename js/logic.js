@@ -10,9 +10,11 @@ $(document).ready(function() {
 });
 
 function convertStringToJSON(string) {
-  var string_rows = string.split(/\n/);
+  string_rows = string.split(/\n/);
   for (index in string_rows) {
     split_row = string_rows[index].split(/\t/);
-    formatted_data[index] = [split_row[0], split_row[1]];
+    stripped_number = split_row[1].replace(/%/,'');
+    formatted_data[index] = [split_row[0], stripped_number];
+    console.log(formatted_data);
   }
 }
