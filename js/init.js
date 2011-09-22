@@ -13,6 +13,7 @@ $(document).ready(function(){
 		else{ 
 								var thisChartType = 'bvs'; 
 		}
+		var thisChartType = 'bhs'; 
 
 		var chartWidth	 	= $('#chartwidth').val();
 
@@ -23,11 +24,6 @@ $(document).ready(function(){
 		var chartBarColor	= $('#bar-color').val();
 
 		var chartData		= '25,4,15,32,8,9';
-
-
-
-
-
 
 
 		var chartLabels		= '';
