@@ -16,6 +16,7 @@
   <script src="js/jquery-1.6.4.min.js"></script>
   <script src="js/jquery.wheelcolorpicker.min.js"></script>
   <script src="js/logic.js"></script>
+  <script src="js/init.js"></script>
   <script type='text/javascript'>
 	$(function() {
 		$('.colorpicker').wheelColorPicker({dir: 'images'});
@@ -109,15 +110,12 @@
 		<h2>Preview</h2>
 		
 		<div id="preview-canvas"> 
-		PREVIEW GOES HERE
+			<img id="chartPreview" src="http://chart.googleapis.com/chart?cht=bhs&chs=460x239&chdlp=r&chco=FFCC33%2CC3D9FF&chxt=x%2Cy&chxr&chbh=a%2C3&chd=e%3AKJTgY-gxuC%2ChjWoJXY-R8&chf=bg%2Cs%2CEFEFEF|c%2Cs%2CF7F8F9&chxl=0%3A|A|B|C|D|E|1%3A|Apple|Banana|Mango|Orange|Peach&chxp=0%2C0%2C5%2C10%2C15%2C20|1%2C10%2C30%2C50%2C70%2C90&chxs&chxtc&chdl=Male|Female&chma=|150" />
 		</div>
 
 
 		<div>
-		<p>
-		
-		<a class="button positive generate"><img src="images/icons/tick.png"> Generate code</a><br/><br/>
-		</p>
+	  		<input type="submit" class="button" id="renderChart" name="renderChart" value="Generate code" />  	
 		</div>
 		
 		<div>
