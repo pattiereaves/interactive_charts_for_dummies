@@ -35,7 +35,7 @@
     
         <div class="title" name="title" onfocus="" onkeyup="">
 			<label for="title"></label>
-			<input id="title" type="text" size="40" value="Name your bar chart">
+			<input id="title" type="text" size="40" value="Name your bar chart" onclick="javascript:this.focus();this.select();">
 			<label for="titlesize">Title size:</label>  
 			<select id="titlesize">
 				<option value="8">8 px</option>
@@ -54,7 +54,7 @@
 
     <div class="span-11 colborder">
     
-    <h2>Data <span class="quiet">Copy &amp; paste your Excel date here</span></h2>
+    <h2>Data <span class="quiet small">Copy &amp; paste your Excel date here</span></h2>
 	<textarea id="data" class="fullwidth" onkeyup="getData()"></textarea>
 
     
@@ -62,15 +62,15 @@
     <h2>Chart options</h2>
 	    <div class="type"  onfocus="" onkeyup="">
 			<h4>Type</h4>
-			<div><input type="radio" name="charttype" value="h" /> <img src="images/hori-type.png" width="16" height="12"> Horizontal <input type="radio" name="charttype" value="v" /> <img src="images/vert-type.png" width="16" height="12"> Vertical </div>
+			<div><input type="radio" name="charttype" value="h" id="horitype" /> <label for="horitype"> <img src="images/hori-type.png" width="16" height="12"> Horizontal</label> <input type="radio" name="charttype" value="v" id="verttype" /> <label for="verttype"><img src="images/vert-type.png" width="16" height="12"> Vertical</label></div>
 		</div>	
 
         <div class="size" id="size" name="size" onfocus="" onkeyup="">
-			<h4>Size <span class="quiet">(in pixel)</span></h4>
+			<h4>Size <span class="quiet small">(in pixel)</span></h4>
 			<label>Width</label>
-			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" onkeyup="updateCode()" value="600">
+			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" onkeyup="updateCode()" value="600" onclick="javascript:this.focus();this.select();">
 			<label>Height</label>
-			<input type="text" name="chartheight" id="chartheight" length="5" size="8" onkeyup="updateCode()" value="300">
+			<input type="text" name="chartheight" id="chartheight" length="5" size="8" onkeyup="updateCode()" value="300" onclick="javascript:this.focus();this.select();">
 		</div>
 		
 		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
@@ -90,13 +90,20 @@
 
 		<h2>Preview</h2>
 		
-		<div> 
+		<div id="preview-canvas"> 
 		PREVIEW GOES HERE
 		</div>
 
 
-		<div class="autoMargin">
-			<h2>Embed code <span class="quiet">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
+		<div>
+		<p>
+		
+		<a class="button positive generate"><img src="images/icons/tick.png"> Generate code</a><br/><br/>
+		</p>
+		</div>
+		
+		<div>
+			<h2>Embed code <span class="quiet small">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
 			<br>
 			<textarea id="codeOutput" class="fullwidth"></textarea>
 		</div>
