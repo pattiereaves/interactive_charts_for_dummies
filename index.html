@@ -26,11 +26,11 @@
    	<div class="span-24 last">
     
         <div class="title" name="title" onfocus="" onkeyup="">
-			<h4>Title</h4>
+			<label for="title">Title</label>
 			<input id="title" type="text" size="40" value="Your title here">
 			<label for="titlesize">Title size:</label>  
 			<select id="titlesize"><option>Option 01</option><option>Option 02</option></select>
-			<label for="titlecolor">Title size:</label>  
+			<label for="titlecolor">Title color:</label>  
 			<select id="titlecolor"><option>Option 01</option><option>Option 02</option></select>
 		</div>
 	</div>
@@ -39,20 +39,20 @@
 
   
     <div class="span-11 colborder">
-	    <div class="type" id="type" name="type" onfocus="" onkeyup="">
+	    <div class="type"  onfocus="" onkeyup="">
 			<h4>Type</h4>
-			<div><input type="radio"> Horizontal <input type="radio"> Vertical </div>
+			<div><input type="radio" name="charttype" value="h" /> Horizontal <input type="radio" name="charttype" value="v" /> Vertical </div>
 		</div>	
 
         <div class="size" id="size" name="size" onfocus="" onkeyup="">
 			<h4>Size</h4>
 			<label>Width</label>
-			<input type="text" name="width" id="width" length="5" size="8" onkeyup="updateCode()" value="600">
+			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" onkeyup="updateCode()" value="600">
 			<label>Height</label>
-			<input type="text" name="height" id="height" length="5" size="8" onkeyup="updateCode()" value="300">
+			<input type="text" name="chartheight" id="chartheight" length="5" size="8" onkeyup="updateCode()" value="300">
 		</div>
 		
-		<div class="color" id="color" name="color" onfocus="" onkeyup="">
+		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
 			<h4>Color</h4>
 			
 		</div>    
@@ -64,9 +64,6 @@
 
 	</div>  
     
-<<<<<<< HEAD
-   
-=======
     
     <div class="span-24 last">
 		<div class="autoMargin">
@@ -78,7 +75,6 @@
     
     
     
->>>>>>> Simple form
     
     <div class="span-24 last center">
       <p>
