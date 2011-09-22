@@ -11,10 +11,9 @@ $(document).ready(function(){
 		var chartHeight	 	= $('#chartheight').val();
 		var chartColor	 	= $('#chartcolor').val();
 
+		var RenderedOutput = chartTitle + chartTitleSize + chartTitleColor + chartType + chartWidth + chartHeight + chartColor;
 
-
-
-		$("#rendered").html(RenderedOutput);
+		$("#codeOutput").html(RenderedOutput);
 
 	});
 
