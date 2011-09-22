@@ -30,7 +30,7 @@
   <div class="container">
   	<div id="header" class="span-24 last">
         <h1>Interactive Bar Chart Generator | Hack Day Project Sept. 22, 2011</h1>
-        <p>Convert your Excel data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html">simple google interactive chart</a>. A project for Hacks/Hackers Hack Day 2011.</p> 
+        <p>Convert your Excel data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html">simple google interactive chart</a>. <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0AtV8-Rfxy-WrdEpNMFNwZXBqRHphS3JNbHNqSnJ3ekE&hl=en_GB#gid=0">Example spreadsheet is here</a>. A project for Hacks/Hackers Hack Day 2011.</p> 
     </div><!-- end #header -->
     
    	<div class="span-24 last">
@@ -57,6 +57,7 @@
     <div class="span-11 colborder">
     
     <h2>Data <span class="quiet tiny">Copy &amp; paste your Excel data here</span></h2>
+    <p id="data-error" class="error" style="display:none;"><img src=​"images/​icons/​cross.png" alt> ERROR: message​</p>
 	<textarea id="data" class="fullwidth" onkeyup="getData()"></textarea>
 	<input type="hidden" id="row1data" value=""></input>
 	<input type="hidden" id="row2data" value=""></input>
@@ -72,9 +73,9 @@
         <div class="size" id="size" name="size" onfocus="" onkeyup="">
 			<h4>Size <span class="quiet small">(in pixel)</span></h4>
 			<label>Width</label>
-			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" onkeyup="updateCode()" value="600" onclick="javascript:this.focus();this.select();">
+			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" value="600" onclick="javascript:this.focus();this.select();">
 			<label>Height</label>
-			<input type="text" name="chartheight" id="chartheight" length="5" size="8" onkeyup="updateCode()" value="300" onclick="javascript:this.focus();this.select();">
+			<input type="text" name="chartheight" id="chartheight" length="5" size="8" value="300" onclick="javascript:this.focus();this.select();">
 		</div>
 		
 		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
