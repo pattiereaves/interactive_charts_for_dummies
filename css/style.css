@@ -25,8 +25,15 @@
 /**************************************/
 /*              HEADER                */
 /**************************************/
+#header {
+	background: #eee;
+	}
 
-
+h1{
+	color: #333;
+	margin-bottom: 8px;
+	text-shadow: 1px 1px 3px #ddd;
+	}
 
 /**************************************/
 /*             NAVIGATION             */
@@ -38,6 +45,20 @@
 /*            MAIN CONTENT            */
 /**************************************/
 
+textarea {
+width: 100%;
+font-family: Consolas, "Monaco";
+font-size: 12px;
+height: 200px;
+padding: 10px;
+}
+
+input[type="text"] {
+	font-family: 'Liberation Sans', Helvetica, Arial, sans-serif;
+	padding:7px;
+	font-size: 14px;
+	width:100%;
+}
 
 
 /**************************************/

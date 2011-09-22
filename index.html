@@ -18,17 +18,67 @@
 
 <body>
   <div class="container">
-  	<div class="span-24 last">
+  	<div id="header" class="span-24 last">
         <h1>Interactive Charts for Dummies | Hack Day Project Sept. 22, 2011</h1>
-  	</div>
+        <p>Convert your Excel data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html">simple google interactive chart</a>. A project for Hacks/Hackers Hack Day 2011.</p> 
+    </div><!-- end #header -->
+    
+   	<div class="span-24 last">
+    
+        <div class="title" id="title" name="title" onfocus="" onkeyup="">
+			<h4>Title</h4>
+			<input type="text" size="40" value="Your title here">
+			<label for="titlesize">Title size:</label>  
+			<select id="titlesize"><option>Option 01</option><option>Option 02</option></select>
+			<label for="titlecolor">Title size:</label>  
+			<select id="titlecolor"><option>Option 01</option><option>Option 02</option></select>
+		</div>
+	</div>
+	
+	
+
   
     <div class="span-11 colborder">
-      <p>Content</p>
-    </div><div class="span-12 last">
-		<p>right col</p> 
-    </div>  
+	    <div class="type" id="type" name="type" onfocus="" onkeyup="">
+			<h4>Type</h4>
+			<div><input type="radio"> Horizontal <input type="radio"> Vertical </div>
+		</div>	
+
+        <div class="size" id="size" name="size" onfocus="" onkeyup="">
+			<h4>Size</h4>
+			<label>Width</label>
+			<input type="text" name="width" id="width" length="5" size="8" onkeyup="updateCode()" value="600">
+			<label>Height</label>
+			<input type="text" name="height" id="height" length="5" size="8" onkeyup="updateCode()" value="300">
+		</div>
+		
+		<div class="color" id="color" name="color" onfocus="" onkeyup="">
+			<h4>Color</h4>
+			
+		</div>    
+	</div>
+	
+	<div class="span-12 last">
+		<h2>Data <span class="quiet">Copy &amp; paste your Excel date here</span></h2>
+			<textarea id="data" class="fullwidth"></textarea>
+
+	</div>  
     
+<<<<<<< HEAD
    
+=======
+    
+    <div class="span-24 last">
+		<div class="autoMargin">
+			<h2>Embed code <span class="quiet">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
+			<br>
+			<textarea id="codeOutput" class="fullwidth"></textarea>
+		</div>
+    </div>
+    
+    
+    
+>>>>>>> Simple form
     
     <div class="span-24 last center">
       <p>
