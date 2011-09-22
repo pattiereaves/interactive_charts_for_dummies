@@ -36,7 +36,16 @@
 			<label for="title"></label>
 			<input id="title" type="text" size="40" value="Name your bar chart">
 			<label for="titlesize">Title size:</label>  
-			<select id="titlesize"><option>Option 01</option><option>Option 02</option></select>
+			<select id="titlesize">
+				<option value="8">8 px</option>
+				<option value="9">9 px</option>
+				<option value="10">10 px</option>
+				<option value="11">11 px</option>
+				<option value="12">12 px</option>
+				<option value="14">14 px</option>
+				<option value="16">16 px</option>
+				<option value="18">18 px</option>
+			</select>
 			<label for="titlecolor">Title color:</label>  
 			<input type="text" size="40" name="bar-color" class="colorpicker"></input>	
 		</div>
@@ -56,7 +65,7 @@
 		</div>	
 
         <div class="size" id="size" name="size" onfocus="" onkeyup="">
-			<h4>Size</h4>
+			<h4>Size <span class="quiet">(in pixel)</span></h4>
 			<label>Width</label>
 			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" onkeyup="updateCode()" value="600">
 			<label>Height</label>
