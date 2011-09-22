@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("#render").click(function(){
+	$("#renderChart").click(function(){
 
 		var chartTitle 		= $('#title').val();
 		var chartTitleSize 	= $('#titlesize').val();
@@ -21,8 +21,8 @@ $(document).ready(function(){
 		var chartColor	 	= $('#chartcolor').val();
 		var chartBarColor	= $('#bar-color').val();
 
-		var chartData		= ;
-		var chartLabels		= ;
+		var chartData		= '';
+		var chartLabels		= '';
 
 		var RenderedOutput 	= chartTitle + chartTitleSize + chartTitleColor + chartType + chartWidth + chartHeight + chartColor;
 
