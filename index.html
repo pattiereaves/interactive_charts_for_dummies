@@ -19,7 +19,8 @@
   <script type='text/javascript'>
 	$(function() {
 		$('.colorpicker').wheelColorPicker({dir: 'images'});
-		$('.title-colorpicker').wheelColorPicker({dir: 'images', color: '6699cc'});
+		$('.title-colorpicker').wheelColorPicker({dir: 'images', color: '000000'});
+		$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '6699cc'});
 	});
 	</script>
 </head>
@@ -27,7 +28,7 @@
 <body>
   <div class="container">
   	<div id="header" class="span-24 last">
-        <h1>Interactive Bar Charts for Dummies | Hack Day Project Sept. 22, 2011</h1>
+        <h1>Interactive Bar Charts Generator | Hack Day Project Sept. 22, 2011</h1>
         <p>Convert your Excel data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html">simple google interactive chart</a>. A project for Hacks/Hackers Hack Day 2011.</p> 
     </div><!-- end #header -->
     
@@ -48,13 +49,13 @@
 				<option value="18">18 px</option>
 			</select>
 			<label for="titlecolor">Title color:</label>  
-			<input type="text" size="40" name="title-color" class="title-colorpicker"></input>	
+			<input type="text" size="40" name="title-color" class="title-colorpicker colorpicker"></input>	
 		</div>
 	</div>
 
     <div class="span-11 colborder">
     
-    <h2>Data <span class="quiet small">Copy &amp; paste your Excel date here</span></h2>
+    <h2>Data <span class="quiet tiny">Copy &amp; paste your Excel data here</span></h2>
 	<textarea id="data" class="fullwidth" onkeyup="getData()"></textarea>
 
     
@@ -82,7 +83,7 @@
 			<input type="text" size="40" name="chart-color" class="colorpicker"></input><br/>
 
 			<label for="bar-color">Bar color</label>
-			<input type="text" size="40" name="bar-color" class="colorpicker"></input>	
+			<input type="text" size="40" name="bar-color" class="bar-colorpicker colorpicker"></input>	
 		</div>    
 	</div>
 	
@@ -103,7 +104,7 @@
 		</div>
 		
 		<div>
-			<h2>Embed code <span class="quiet small">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
+			<h2>Embed code <span class="quiet tiny">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
 			<br>
 			<textarea id="codeOutput" class="fullwidth"></textarea>
 		</div>
@@ -112,13 +113,11 @@
 	</div>  
     
     
-    <div class="span-24 last">
-	    </div>
+
     
     
     
-    
-    <div class="span-24 last center">
+    <div class="span-24 last center" id="footer">
       <p>
       As part of Hacks/Hackers <a href="http://meetupbos.hackshackers.com/events/17319807/?eventId=17319807&action=detail&rv=rv17&rv=rv17">ONA Hack Day</a> by <a href="http://twitter.com/daigofuji">Daigo Fujiwara</a>, <a href="http://twitter.com/foxyninja7">Kevin Shaul</a>, <a href="http://twitter.com/erika_owens">Erika Owens</a>, <a href="http://twitter.com/kdawg39">Kieth Robinson, <a href="http://twitter.com/monkeycycle_org">Michael Pereira</a>, and <a href="http://twitter.com/pazzypunk"> Pattie Reaves</a>
       </p>

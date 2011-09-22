@@ -27,12 +27,14 @@
 /**************************************/
 #header {
 	background: #eee;
+	padding-left: 16px;
+	margin-bottom: 1em;
 	}
 
 h1{
 	color: #333;
 	margin-bottom: 8px;
-	text-shadow: 1px 1px 3px #ddd;
+	text-shadow: 1px 1px 3px #999;
 	}
 
 /**************************************/
@@ -76,7 +78,7 @@ input.colorpicker {
 }
 
 input.title-colorpicker {
-	width:30%;
+	width:15%;
 }
 
 #preview-canvas {
@@ -87,7 +89,15 @@ input.title-colorpicker {
 a.generate {
 	font-size: 18px;
 }
+
+.tiny {
+	font-size: .6em;
+}
 /**************************************/
 /*               FOOTER               */
 /**************************************/
-
+#footer {
+	background: #eee;
+	padding:1em;
+	margin-top: 2em;
+	}
