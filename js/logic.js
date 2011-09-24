@@ -38,7 +38,7 @@ function getData() {
     cleaned_data = convertStringToJSON(data_value);
     row1 = arrayToString(cleaned_data, 0);
     row2 = arrayToString(cleaned_data, 1);
-
+ git
     $('#row1data').val(row1);
     $('#row2data').val(row2);
 }

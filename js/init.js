@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 	$('.colorpicker').wheelColorPicker({dir: 'images'});
 	$('.title-colorpicker').wheelColorPicker({dir: 'images', color: '000000'});
-	$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '6699cc'});
+	$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '0033cc'});
 
 });
 
