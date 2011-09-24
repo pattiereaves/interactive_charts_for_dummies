@@ -1,4 +1,5 @@
-var formatted_data = new Object;
+
+var formatted_data = new Array;
 var error_messages = new Object;
 
 function convertStringToJSON(string) {
@@ -10,45 +11,52 @@ function convertStringToJSON(string) {
       formatted_data['header-1'] = split_row[0];
       formatted_data['header-2'] = split_row[1];
     } else {
-      stripped_number = split_row[1].replace(/%|\$|,|#/g,'');
-      re = /^[0-9]*$/;
-      if (!re.test(stripped_number)) {
-        var adjusted_index = parseInt(index) + 1;
-        $('#data-error').html('Row ' + adjusted_index + ', column two contains an invalid character. Only numbers are allowed in column two. Please fix and resubmit.');
-        $('#data-error').css('display', 'block');
-        numError = true;
-      } else {
-        formatted_data[index] = [split_row[0], stripped_number];
-      }
+		if(split_row[0] !== undefined) {
+	      stripped_number = split_row[1].replace(/%|\$|,|#/g,'');
+	      re = /^[0-9]*$/;
+	      if (!re.test(stripped_number)) {
+	        var adjusted_index = parseInt(index) + 1;
+	        $('#data-error').html('Row ' + adjusted_index + ', column two contains an invalid character. Only numbers are allowed in column two. Please fix and resubmit.');
+	        $('#data-error').css('display', 'block');
+	        numError = true;
+		
+	      } else {
+	        formatted_data[index] = [split_row[0], stripped_number];
+	      }
+	}
     }
   }
   if (!numError) {
     $('#data-error').css('display', 'none');
   }
+
+return formatted_data;
 }
 
 function getData() {
     data_value = $('#data').val();
-    convertStringToJSON(data_value);
     cleaned_data = convertStringToJSON(data_value);
-    row1 = stringToArray(cleaned_data, 0);
-    row2 = stringToArray(cleaned_data, 1);
+    row1 = arrayToString(cleaned_data, 0);
+    row2 = arrayToString(cleaned_data, 1);
 
     $('#row1data').val(row1);
     $('#row2data').val(row2);
 }
 
-function stringToArray(inputArray, row_choice) {
+function arrayToString(inputArray, row_choice) {
     var row;
 
-
     for(i=0; i < inputArray.length; i++) {
-        row += inputArray.i[row_choice];
-        if((i+1) < inputArray.length) {
-            row += ',';
-        } 
-    }
-
+		if(inputArray[i] !== undefined) {
+			if(inputArray[i][row_choice] !== undefined || inputArray[i][row_choice] !== '') {
+				if(i > 0) {
+					row +=',';
+				}
+				row += inputArray[i][row_choice];
+			}
+			
+		}
+    } 
 
     return row;
 }
