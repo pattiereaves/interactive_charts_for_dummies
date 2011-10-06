@@ -1,0 +1,21 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+	var data = new google.visualization.DataTable();
+	var labels = ["Apr.", "May", "June", "July", "Aug.", "Sept."];
+	var datavalues = [2.65,1.00,3.21,2.06,3.89,5.48];
+	var labelname = "Month";
+	var datavaluename = "Beckett's ERA";
+	data.addColumn("string", labelname);
+	data.addColumn("number", datavaluename);
+	data.addRows(labels.length);
+	for (var i = 0; i  < labels.length; ++i) {
+		data.setValue(i, 0, labels[i]);
+		data.setValue(i, 1, datavalues[i]);
+	}
+	var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+	chart.draw(data, {title: "Name your chart",	titleTextStyle: {fontSize: 16, color: "#000000"}, width: 330, height: 250, backgroundColor: "#ffffff", colors:["#0033cc"], legend: "none"});
+  }
+</script><div id="chart_div"></div>

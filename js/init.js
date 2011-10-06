@@ -1,19 +1,28 @@
 $(document).ready(function(){
 
 	$("#renderChart").click(function(){
-
+				
+		//google.setOnLoadCallback(drawChart); is needed for embed code, but to have it on the page, I just need drawChart();
+	
+		var previewTemplateHTML ='<script type="text/javascript">function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("prevDiv"));chart.draw(data, {<%= chartOption %>});}drawChart();</s'+'cript><div id="prevDiv"></div>';
+		
+		var embedTemplateHTML ='&#60;script type="text/javascript" src="https://www.google.com/jsapi">&#60;/s'+'cript>&#60;script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});google.setOnLoadCallback(drawChart);function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("<%= chartDivId %>"));chart.draw(data, {<%= chartOption %>});}&#60;/s'+'cript>&#60;div id="<%= chartDivId %>">&#60;/div>';
+	
+		var wantTitle		= $('input[name=wanttitle]:checked').val();
 		var chartTitle 		= $('#title').val();
 		var chartTitleSize 	= $('#titlesize').val();
 		var chartTitleColor = $('#title-color').val();
 
-		var chartType 		= $('#charttype').val();
-		if(chartType == 'h' ){ 
-								var thisChartType = 'bhs'; 
-		}
-		else{ 
-								var thisChartType = 'bvs'; 
-		}
-		var thisChartType = 'bhs'; 
+		var chartType 		= $('input[name=charttype]:checked').val();
+			if(chartType == 'BarChart' ){ 
+							var thisChartType = 'bhs'; 
+			}
+			else if(chartType == 'LineChart' ){ 
+							var thisChartType = 'lxy'; 
+			}
+			else { 
+							var thisChartType = 'bvs'; 
+			}
 
 		var chartWidth	 	= $('#chartwidth').val();
 
@@ -23,28 +32,83 @@ $(document).ready(function(){
 		var chartColor	 	= $('#chart-color').val();
 		var chartBarColor	= $('#bar-color').val();
 
-		var chartData		= '25,4,15,32,8,9';
+		var chartLegend 	= $('#legend-position').val();
+		
+		var chartData		= $('#chartdata').val();
+		var chartLabels		= $('#chartlabels').val();
+		var chartDataName		= $('#chartdataname').val();
+		var chartLabelsName		= $('#chartlabelsname').val();
+		
+		var chartDivId		= $('#chartdivid').val();
+		
+
+		var chartOption = '';
+		if(wantTitle == 'titleyes') {
+			chartOption += 'title: "' + chartTitle + '", titleTextStyle: {fontSize: '+ chartTitleSize +', color: "#' + chartTitleColor + '"}, ';
+		}
+		chartOption += 'width: '+ chartWidth +', height: '+ chartHeight + ', backgroundColor: "#'+ chartColor +'", colors:["#'+ chartBarColor +'"], legend: "'+ chartLegend +'"';
+
+		var chartDataObject = {
+			'chartLabels': chartLabels,
+			'chartData': chartData,
+			'chartLabelsName': chartLabelsName,
+			'chartDataName': chartDataName,
+			'chartType': chartType,
+			'chartDivId': chartDivId,
+			'chartOption': chartOption, 
+			'chartDivId': chartDivId		
+			}
+		
+		var previewHTML = _.template(previewTemplateHTML,chartDataObject);
+		var embedHTML = _.template(embedTemplateHTML,chartDataObject);
 
 
-		var chartLabels		= '';
+		$("#preview-canvas").html(previewHTML);
 
-		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize + '&chf=bg,s,' + chartCanvasColor + '|c,s,' + chartColor;
+		$("#codeOutput").html(embedHTML);
+		
+		// IMAGE CHART
+		var chartPreviewSRC	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chxt=x&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize + '&chf=bg,s,' + chartCanvasColor + '|c,s,' + chartColor;
 
-		//var RenderedOutput	= 'http://chart.googleapis.com/chart?cht=' + thisChartType + '&chs=' + chartWidth + 'x' + chartHeight + '&chdlp=r&chco=' + chartBarColor + '&chd=t:' + chartData + '&chxl=' + chartLabels + '&chxs&chxtc&chma=|150&chtt=' + chartTitle + '&chts=' + chartTitleColor + '%2C' + chartTitleSize ;
-
-
-		var RenderedOutput 	= '<img src="' + chartPreviewSRC + '" alt="' + chartTitle + '" title="' + chartTitle + '" />';
-
-
+		var RenderedImgOutput 	= '<img src="' + chartPreviewSRC + '" />';		
+		$("#codeImgOutput").html(RenderedImgOutput);
 		$("#chartPreview").attr("src",chartPreviewSRC);
-
-		$("#codeOutput").html(RenderedOutput);
-
 	});
 
 	$('.colorpicker').wheelColorPicker({dir: 'images'});
 	$('.title-colorpicker').wheelColorPicker({dir: 'images', color: '000000'});
 	$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '0033cc'});
 
+	$('#titleno').click(function() {
+  		$("#titleoption").hide("slow");
+	});
+	$('#titleyes').click(function() {
+  		$("#titleoption").show("slow");
+	});
+	
+	$('#randomchartdivid').click(function() {
+  		$("#chartdivid").attr("value",rand(5));;
+	});	
+
+	$("#imgchart").hide();
+	$('#showimgchart').click(function() {
+  		$("#imgchart").show("slow");
+	});
 });
 
+
+function numberFormat(nStr){
+     nStr += '';
+     x = nStr.split('.');
+     x1 = x[0];
+     x2 = x.length > 1 ? '.' + x[1] : '';
+     var rgx = /(\d+)(\d{3})/;
+     while (rgx.test(x1))
+       x1 = x1.replace(rgx, '$1' + ',' + '$2');
+     return x1 + x2;
+}
+
+function rand(length,current){
+	current = current ? current : '';
+	return length ? rand( --length , "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".charAt( Math.floor( Math.random() * 60 ) ) + current ) : current;
+}

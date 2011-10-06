@@ -1,0 +1,22 @@
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Year');
+        data.addColumn('number', 'Sales');
+        data.addRows(4);
+        data.setValue(0, 0, '2004');
+        data.setValue(0, 1, 1000);
+        data.setValue(1, 0, '2005');
+        data.setValue(1, 1, 1170);
+        data.setValue(2, 0, '2006');
+        data.setValue(2, 1, 860);
+        data.setValue(3, 0, '2007');
+        data.setValue(3, 1, 1030);
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 400, height: 240, title: 'Company Performance'});
+      }
+    </script>
+    <div id="chart_div"></div>
