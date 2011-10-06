@@ -64,7 +64,7 @@ input[type="text"] {
 	width:100%;
 }
 input#title {
-font-size: 28px;
+font-size: 16px;
 font-weight: bold;
 }
 input#chartwidth, input#chartheight {
@@ -72,6 +72,9 @@ input#chartwidth, input#chartheight {
 }
 input#chartwidth  {
 	margin-right: 5%;
+}
+input#chartlabelsname, input#chartdataname {
+	width:40%;margin-left: 5%;
 }
 input.colorpicker {
 	width:30%;

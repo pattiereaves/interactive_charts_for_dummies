@@ -15,16 +15,21 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
   <script src="js/jquery-1.6.4.min.js"></script>
   <script src="js/jquery.wheelcolorpicker.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+
   <script src="js/logic.js" type="text/javascript"></script>
   <script src="js/init.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 </head>
 
 <body>
   <div class="container">
   	<div id="header" class="span-24 last">
-        <h1><img src="images/bar.png" alt="" width="27" height="17" border="0" /> Interactive Bar Chart Generator</h1>
-        <p>Convert your spreadsheet data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html"> google chart</a>. See <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0AtV8-Rfxy-WrdEpNMFNwZXBqRHphS3JNbHNqSnJ3ekE&hl=en_GB#gid=0" target="_blank">Example spreadsheet</a> for how to format your data.  A <a href="http://hackshackers.com/hacking-at-ona11/">Hacks/Hackers Hack Day @ ONA2011</a> project.<br />
+        <h1><img src="images/bar.png" alt="" width="27" height="17" border="0" /> Interactive Bar/Fever Chart Generator</h1>
+        <p>Convert your spreadsheet data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html"> google chart</a>. See <a href="https://docs.google.com/spreadsheet/ccc?key=0Apvvlouo3eMgdG50R3ZCWWZnMUNOeVB1QWM3ai1tamc&hl=en_US" target="_blank">Example spreadsheet</a> for how to format your data.  A <a href="http://hackshackers.com/hacking-at-ona11/">Hacks/Hackers Hack Day @ ONA2011</a> project.<br />
         dotcloud URL: <a href="http://interactivechartsfordummies-pazzypunk.dotcloud.com/">http://interactivechartsfordummies-pazzypunk.dotcloud.com/</a>, and shortened at: <a href="http://j.mp/interactivecharts">j.mp/interactivecharts</a>. Check out the <a href="https://github.com/pazzypunk/interactive_charts_for_dummies">git repo</a>.</p> 
+        <p>Updated <a href="https://docs.google.com/document/d/1vekp8TzdLXnKgNC4k9BXE6sQIT3ypIWWhqOh0MDQLQ0/edit?hl=en_US">a google doc file for examples</a> and what need to be done</p>
 
         <p><!-- AddThis Button BEGIN -->
 		<div class="addthis_toolbox addthis_default_style ">
@@ -35,24 +40,29 @@
 		<a class="addthis_button_compact"></a>
 		<a class="addthis_counter addthis_bubble_style"></a>
 		</div>
-		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7db41d045e7543"></script>
+		<!-- script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7db41d045e7543"></script -->
 		<!-- AddThis Button END --></p>
     </div><!-- end #header -->
     
    	<div class="span-24 last">
     
-        <div class="title" name="title" onfocus="" onkeyup="">
+        <div class="title" name="title">
+        <label>Do you want headline for this chart displayed?:</label>
+			<input type="radio" name="wanttitle" value="titleyes" id="titleyes" checked="checked" /><label for="titleyes"> Yes</label>
+			<input type="radio" name="wanttitle" value="titleno" id="titleno" /> <label for="titleno"> No</label>
+			<div id="titleoption">
 			<label for="title"></label>
-			<input id="title" type="text" size="40" value="Name your bar chart" onclick="javascript:this.focus();this.select();">
-			<label for="titlesize">Title size:</label>  
+			<input id="title" type="text" size="40" value="Name your chart" onclick="javascript:this.focus();this.select();">
+			
+			<label for="titlesize">Headline size:</label>  
 			<select id="titlesize">
-				<option value="8">8 px</option>
-				<option value="9">9 px</option>
 				<option value="10">10 px</option>
 				<option value="11">11 px</option>
-				<option value="12" selected="selected">12 px</option>
+				<option value="12">12 px</option>
+				<option value="13">13 px</option>
 				<option value="14">14 px</option>
-				<option value="16">16 px</option>
+				<option value="15">15 px</option>
+				<option value="16" selected="selected">16 px</option>
 				<option value="18">18 px</option>
 				<option value="20">20 px</option>
 				<option value="22">22 px</option>
@@ -61,65 +71,79 @@
 				<option value="32">32 px</option>
 
 			</select>
-			<label for="titlecolor">Title color:</label>  
+			<label for="titlecolor">Headline color:</label>  
 			<input type="text" size="40" id="title-color" name="title-color" class="title-colorpicker colorpicker"></input>	
+			</div>
 		</div>
 	</div>
 
     <div class="span-11 colborder">
-    
     <h2>Data <span class="quiet tiny">Copy &amp; paste your spreadsheet data here</span></h2>
     <p id="data-error" class="error" style="display:none;">ERROR: message​</p>
-	<textarea id="data" class="fullwidth" onkeyup="getData()">
-X label 	Y label
-Fish	25
-Pigs	4
-Zebras	15
-Monkeys	32
-Sloths	8
-Toads	9
-	
-	</textarea>
-	<input type="hidden" id="row1data" value=""></input>
-	<input type="hidden" id="row2data" value=""></input>
-
+	<textarea id="data" class="fullwidth" onkeyup="getData()"></textarea>
     
-    
+    <div style="padding-left:5px; border-left:1px solid #999;">
+    <!-- eventually delete this from here  -->
+		<h4>Labels <span class="quiet tiny">Enter comma separated value.</span></h4>
+			Name labels (i.e. Year, Company...): <input type="text" id="chartlabelsname" value="Month"></input><br/>
+			<input type="text" id="chartlabels" value="&quot;Apr.&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug.&quot;, &quot;Sept.&quot;"></input>
+			
+		
+		<h4>Values <span class="quiet tiny">Enter comma separated value, only numbers.</span></h4>
+			Name of data: <input type="text" id="chartdataname" value="Beckets ERA"></input><br/>
+			<input type="text" id="chartdata" value="2.65,1.00,3.21,2.06,3.89,5.48"></input>
+			<div class="datatype-select"><!-- eventually change -->
+				<input type="radio" name="datatype" value="num" id="num" checked="checked" /> <label for="num"> Number</label>
+				<input type="radio" name="datatype" value="pct" id="pct" /> <label for="pct"> Percentage (%)</label>
+				<input type="radio" name="datatype" value="dol" id="dol" /> <label for="dol"> Currency ($)</label> (Those do nothing)<br/>
+			</div>
+	 <!-- to here  -->
+	 </div>
     <h2>Chart options</h2>
-	    <div class="type"  onfocus="" onkeyup="">
+	    <div class="type" >
 			<h4>Type</h4>
-			<div><input type="radio" name="charttype" value="h" id="horitype" checked="checked" /> <label for="horitype"> <img src="images/hori-type.png" width="16" height="12"> Horizontal</label> <input type="radio" name="charttype" value="v" id="verttype" /> <label for="verttype"><img src="images/vert-type.png" width="16" height="12"> Vertical</label></div>
+			<div><input type="radio" name="charttype" value="BarChart" id="horitype" checked="checked" /> <label for="horitype"> <img src="images/hori-type.png" width="16" height="12"> Horizontal Bar</label>
+			<input type="radio" name="charttype" value="ColumnChart" id="verttype" /> <label for="verttype"><img src="images/vert-type.png" width="16" height="12"> Vertical Bar</label>
+			<input type="radio" name="charttype" value="LineChart" id="linetype" /> <label for="linetype"><img src="images/line-type.png" width="16" height="12"> Fever</label>
+			
+			</div>
 		</div>	
 
-        <div class="size" id="size" name="size" onfocus="" onkeyup="">
+        <div class="size" id="size" name="size">
 			<h4>Size <span class="quiet small">(in pixel)</span></h4>
-			<label>Width</label>
-			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" value="600" onclick="javascript:this.focus();this.select();">
-			<label>Height</label>
-			<input type="text" name="chartheight" id="chartheight" length="5" size="8" value="200" onclick="javascript:this.focus();this.select();">
+			<label for="chartwidth">Width</label>
+			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" value="330" onclick="javascript:this.focus();this.select();">
+			<label for="chartheight">Height</label>
+			<input type="text" name="chartheight" id="chartheight" length="5" size="8" value="300" onclick="javascript:this.focus();this.select();">
 		</div>
 		
-		<div class="color" id="chartcolor" name="chartcolor" onfocus="" onkeyup="">
+		<div class="color" id="chartcolor" name="chartcolor">
 			<h4>Color</h4>
-			<label for="canvas-color">Canvas background color</label>
-			<input type="text" size="40" id="canvas-color" name="canvas-color" class="colorpicker"></input><br/>
+			<!-- <label for="canvas-color">Canvas background color</label>
+			<input type="text" size="40" id="canvas-color" name="canvas-color" class="colorpicker"></input><br/> -->
 
-			<label for="chart-color">Chart background color</label>
+			<label for="chart-color">Background color</label>
 			<input type="text" size="40" id="chart-color" name="chart-color" class="colorpicker"></input><br/>
 
 			<label for="bar-color">Bar color</label>
 			<input type="text" size="40" id="bar-color" name="bar-color" class="bar-colorpicker colorpicker"></input>	
 		</div>
 		
-		<div class="legend" id="chartlegend" name="chartlegend" onfocus="" onkeyup="">
+		<div class="legend" id="chartlegend">
 			<h4>Legend position</h4>
 			<label for="legend-position">Canvas background color</label>
 			<select id="legend-position">
 				<option value="none">No legend</option>
-				<option value="left">Left</option>
+				<option value="top">Top</option>
 				<option value="right">Right</option>
 				<option value="bottom">Bottom</option>
 			</select>	
+		</div>
+		
+		<div class="color" id="chartcolor" name="chartcolor">
+			<h4>Chart Div id</h4>
+			<label for="chartdivid">Change this if you plan to have multiple charts on one page. <a href="javascript:void(0);" id="randomchartdivid">Randomize</a></label>
+			<input type="text" size="40" id="chartdivid" name="chartdivid" value="chart_div"></input><br/>
 		</div>
 		
 	</div>
@@ -127,9 +151,11 @@ Toads	9
 	<div class="span-12 last">
 
 		<h2>Preview</h2>
-		
+		<script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});</script>
 		<div id="preview-canvas"> 
-			<img id="chartPreview" src="" />
+			
+			
+			
 		</div>
 
 
@@ -142,6 +168,12 @@ Toads	9
 			<br>
 			<textarea id="codeOutput" class="fullwidth"></textarea>
 			<p>Tips: Try changing your bar chart's <a href="http://code.google.com/apis/chart/interactive/docs/gallery/barchart.html#Configuration_Options">configuration options</a></p>
+			
+			<h5>BONUS: <a href="http://code.google.com/apis/chart/image/">Google Image Charts</a> <a href="javascript:void(0);" class="small" id="showimgchart">SHOW</a></h5>
+			<div id="imgchart">
+				<textarea id="codeImgOutput" class="fullwidth"></textarea>
+				<img id="chartPreview" src="images/bar.png">
+			</div>
 		</div>
 	</div>  
 
