@@ -33,15 +33,86 @@ function convertStringToJSON(string) {
 return formatted_data;
 }
 
+
+function spritDataToObject(string) {
+ // desied output is labels labelsname values valuesname
+	string_rows = string.split(/\n/);	
+	for (index in string_rows) {
+    	split_row = string_rows[index].split(/\t/);
+    	formatted_data[index] = split_row;
+    	}
+  return formatted_data;
+  //returns two arrays
+}
+
 function getData() {
     data_value = $('#data').val();
     cleaned_data = convertStringToJSON(data_value);
     row1 = arrayToString(cleaned_data, 0);
     row2 = arrayToString(cleaned_data, 1);
- git
+ //git
     $('#row1data').val(row1);
     $('#row2data').val(row2);
 }
+
+function processData() {
+    data_value = $('#data').val();
+	cleaned_data = spritDataToObject(data_value);
+	//cleaned_data has two arrays [0] is labels, with [0][0] being the name of the labels
+	// [1] is data values
+	label_data = makeQuoteString(cleaned_data[0]);
+	datavalue_data = makeNonQuoteString(cleaned_data[1]);
+    $('#chartlabels').attr("value",label_data[1]);
+    $('#chartdata').attr("value",datavalue_data[1]);
+    $('#chartlabelsname').attr("value",label_data[0]);
+    $('#chartdataname').attr("value",datavalue_data[0]);
+}
+
+
+function makeQuoteString(inputArray) {
+	// returns two strings, label and values made into strings with quotation like "Monday","Tuesday"...
+	var val = new Array('','"');
+	var lastnum = inputArray.length -1;
+		   for(i=0; i < inputArray.length; i++) {
+		   		if (i==0){ val[0] = inputArray[i]; }
+		   		else { 
+		   		val[1] += inputArray[i];
+		   			if (i == lastnum) {
+		   			} else {
+		   			val[1] += '","';
+		   			}
+		   		}
+		   }
+	val[1] +='"';
+	return val;
+}
+
+
+function makeNonQuoteString(inputArray) {
+	// returns two strings, label and values made into strings with quotation like "Monday","Tuesday"...
+	var val = new Array('','');
+	var lastnum = inputArray.length -1;
+		   for(i=0; i < inputArray.length; i++) {
+		   		if (i==0){ val[0] = inputArray[i]; }
+		   		else { 
+		   		  re = /^[0-9.]*$/;
+				  if (!re.test(inputArray[i])) {
+					$('#data-error').html('Data value contains an invalid character. Only numbers are allowed in column two. Try debugging the data processing below.');
+					$('#data-error').css('display', 'block');
+				  } else {
+			   		val[1] += inputArray[i];
+			   			if (i == lastnum) {
+			   			} else {
+		   				val[1] += ',';
+		   				}
+		   			}
+		   		}
+		   }
+		   
+	return val;
+}
+
+
 
 function arrayToString(inputArray, row_choice) {
     var row;

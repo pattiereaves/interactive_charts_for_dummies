@@ -89,10 +89,21 @@ $(document).ready(function(){
 	$('#randomchartdivid').click(function() {
   		$("#chartdivid").attr("value",rand(5));;
 	});	
+	$('#changeBlue').click(function() {
+  		$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '3f5f9c'});
+	});
+	$('#changeRed').click(function() {
+  		$('.bar-colorpicker').wheelColorPicker({dir: 'images', color: '9B1518'});
+	});
 
 	$("#imgchart").hide();
 	$('#showimgchart').click(function() {
   		$("#imgchart").show("slow");
+	});
+	
+	$("#debug").hide();
+	$('#showdebug').click(function() {
+  		$("#debug").show("slow");
 	});
 });
 

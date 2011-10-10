@@ -4,7 +4,7 @@
 
 <head>
 
-  <title>Interactive Bar Chart Generator | Convert your spreadsheet into Google Chart Tool | Hack Day Project Sept. 22, 2011</title>
+  <title>Interactive Bar/Fever Chart Generator | Convert your spreadsheet into Google Chart Tool | Hack Day Project Sept. 22, 2011</title>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
   <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
@@ -27,9 +27,10 @@
   <div class="container">
   	<div id="header" class="span-24 last">
         <h1><img src="images/bar.png" alt="" width="27" height="17" border="0" /> Interactive Bar/Fever Chart Generator</h1>
-        <p>Convert your spreadsheet data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html"> google chart</a>. See <a href="https://docs.google.com/spreadsheet/ccc?key=0Apvvlouo3eMgdG50R3ZCWWZnMUNOeVB1QWM3ai1tamc&hl=en_US" target="_blank">Example spreadsheet</a> for how to format your data.  A <a href="http://hackshackers.com/hacking-at-ona11/">Hacks/Hackers Hack Day @ ONA2011</a> project.<br />
-        dotcloud URL: <a href="http://interactivechartsfordummies-pazzypunk.dotcloud.com/">http://interactivechartsfordummies-pazzypunk.dotcloud.com/</a>, and shortened at: <a href="http://j.mp/interactivecharts">j.mp/interactivecharts</a>. Check out the <a href="https://github.com/pazzypunk/interactive_charts_for_dummies">git repo</a>.</p> 
-        <p>Updated <a href="https://docs.google.com/document/d/1vekp8TzdLXnKgNC4k9BXE6sQIT3ypIWWhqOh0MDQLQ0/edit?hl=en_US">a google doc file for examples</a> and what need to be done</p>
+        <p>Convert your spreadsheet data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html"> google chart</a>.  A <a href="http://hackshackers.com/hacking-at-ona11/">Hacks/Hackers Hack Day @ ONA2011</a> project.<br />
+        <strong>How to format your data</strong>: For Example, 
+        <a href="https://docs.google.com/spreadsheet/ccc?key=0Apvvlouo3eMgdFZWeUNPQ1pjYXJINmtSOW9YZ09ISEE&hl=en_US" target"_blank">this spreadsheet</a> will produce <a href="examples/example-unemployment.html" target"_blank">this</a>, <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdG50R3ZCWWZnMUNOeVB1QWM3ai1tamc&hl=en_US#gid=0" target"_blank">this spreadsheet</a> will produce <a href="examples/example-beckett-era.html" target"_blank">this</a>, and  <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdDZOLUdRNlh5dkRvQjRxVzM0UkNGQmc&hl=en_US#gid=0" target"_blank">this spreadsheet</a> will produce <a href="examples/example-usmedian-income.html" target"_blank">this</a>.<br/>
+        dotcloud URL: <a href="http://interactivechartsfordummies-pazzypunk.dotcloud.com/">http://interactivechartsfordummies-pazzypunk.dotcloud.com/</a>, and shortened at: <a href="http://j.mp/interactivecharts">j.mp/interactivecharts</a>. Check out the <a href="https://github.com/pazzypunk/interactive_charts_for_dummies">git repo</a>. <a href="https://docs.google.com/document/d/1vekp8TzdLXnKgNC4k9BXE6sQIT3ypIWWhqOh0MDQLQ0/edit?hl=en_US">Google doc</a> memo</p>
 
         <p><!-- AddThis Button BEGIN -->
 		<div class="addthis_toolbox addthis_default_style ">
@@ -80,18 +81,16 @@
     <div class="span-11 colborder">
     <h2>Data <span class="quiet tiny">Copy &amp; paste your spreadsheet data here, i.e. <a href="https://docs.google.com/spreadsheet/ccc?key=0Apvvlouo3eMgdFZWeUNPQ1pjYXJINmtSOW9YZ09ISEE&hl=en_US" target"_blank">1</a>, <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdG50R3ZCWWZnMUNOeVB1QWM3ai1tamc&hl=en_US#gid=0" target"_blank">2</a>, <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdDZOLUdRNlh5dkRvQjRxVzM0UkNGQmc&hl=en_US#gid=0" target"_blank">3</a></span></h2>
     <p id="data-error" class="error" style="display:none;">ERROR: message​</p>
-	<textarea id="data" class="fullwidth" onchange="getData()"></textarea>
-    
-    <div style="padding-left:5px; border-left:1px solid #999;">
+	<textarea id="data" class="fullwidth" onchange="processData()"></textarea>
+    <p>Problem processing the data? Try <a href="javascript:void(0);" id="showdebug">debugging it.</a></p>
+    <div style="padding-left:5px; border-left:1px solid #999;" id="debug">
     <!-- eventually delete this from here  -->
-		<h4>Labels <span class="quiet tiny">Enter comma separated value.</span></h4>
-			Name labels (i.e. Year, Company...): <input type="text" id="chartlabelsname" value="Month"></input><br/>
-			<input type="text" id="chartlabels" value="&quot;Apr.&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug.&quot;, &quot;Sept.&quot;"></input>
-			
-		
-		<h4>Values <span class="quiet tiny">Enter comma separated value, only numbers.</span></h4>
-			Name of data: <input type="text" id="chartdataname" value="Beckets ERA"></input><br/>
-			<input type="text" id="chartdata" value="2.65,1.00,3.21,2.06,3.89,5.48"></input>
+		<h4>Data Labels <span class="quiet tiny">Enter comma separated value.</span></h4>
+			Name labels (i.e. Year, Month...): <input type="text" id="chartlabelsname" value=""></input><br/>
+			<input type="text" id="chartlabels" value=""></input>
+		<h4>Data Values <span class="quiet tiny">Enter comma separated value, only numbers.</span></h4>
+			Name of data: <input type="text" id="chartdataname" value=""></input><br/>
+			<input type="text" id="chartdata" value=""></input>
 			<div class="datatype-select"><!-- eventually change -->
 				<input type="radio" name="datatype" value="num" id="num" checked="checked" /> <label for="num"> Number</label>
 				<input type="radio" name="datatype" value="pct" id="pct" /> <label for="pct"> Percentage (%)</label>
@@ -126,7 +125,7 @@
 			<input type="text" size="40" id="chart-color" name="chart-color" class="colorpicker"></input><br/>
 
 			<label for="bar-color">Bar color</label>
-			<input type="text" size="40" id="bar-color" name="bar-color" class="bar-colorpicker colorpicker"></input>	
+			<input type="text" size="40" id="bar-color" name="bar-color" class="bar-colorpicker colorpicker"></input> <a href="javascript:void(0);" id="changeBlue">Blue</a>, <a href="javascript:void(0);" id="changeRed">Dark Red</a>
 		</div>
 		
 		<div class="legend" id="chartlegend">
@@ -142,8 +141,9 @@
 		
 		<div class="color" id="chartcolor" name="chartcolor">
 			<h4>Chart Div id</h4>
-			<label for="chartdivid">Change this if you plan to have multiple charts on one page. <a href="javascript:void(0);" id="randomchartdivid">Randomize</a></label>
 			<input type="text" size="40" id="chartdivid" name="chartdivid" value="chart_div"></input><br/>
+			<p>Change this if you plan to have multiple charts on one page. <a href="javascript:void(0);" id="randomchartdivid">Randomize</a></p>
+			
 		</div>
 		
 	</div>
@@ -167,9 +167,9 @@
 			<h2>Embed code <span class="quiet tiny">Copy &amp; paste this into an HTML in your CMS/Blog</span></h2>
 			<br>
 			<textarea id="codeOutput" class="fullwidth"></textarea>
-			<p>Tips: Try changing your bar chart's <a href="http://code.google.com/apis/chart/interactive/docs/gallery/barchart.html#Configuration_Options">configuration options</a></p>
+			<p>Tips: Try changing configuration options of <a href="http://code.google.com/apis/chart/interactive/docs/gallery/barchart.html#Configuration_Options">horizontal chart</a>, <a href="http://code.google.com/apis/chart/interactive/docs/gallery/columnchart.html">vertical chart</a>, or <a href="http://code.google.com/apis/chart/interactive/docs/gallery/linechart.html">fever chart</a></p>
 			
-			<h5>BONUS: <a href="http://code.google.com/apis/chart/image/">Google Image Charts</a> <a href="javascript:void(0);" class="small" id="showimgchart">SHOW</a></h5>
+			<h6>Bonus: <a href="http://code.google.com/apis/chart/image/">Google Image Charts</a> <a href="javascript:void(0);" class="small" id="showimgchart">SHOW</a></h6>
 			<div id="imgchart">
 				<textarea id="codeImgOutput" class="fullwidth"></textarea>
 				<img id="chartPreview" src="images/bar.png">
