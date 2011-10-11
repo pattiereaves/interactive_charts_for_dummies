@@ -86,7 +86,12 @@
     
     
 	<textarea id="data" class="fullwidth" onchange="processData()"></textarea>
-    <p>Problem processing the data? Try <a href="javascript:void(0);" class="showdebug">debugging it.</a></p>
+	<div class="datatype-select"><em>Data type: </em>
+				<input type="radio" name="datatype" value="num" id="num" checked="checked" onchange="processData()" /> <label for="num"> Number</label>
+				<input type="radio" name="datatype" value="pct" id="pct" onchange="processData()" /> <label for="pct"> Percentage (%)</label>
+				<input type="radio" name="datatype" value="dol" id="dol" onchange="processData()" /> <label for="dol"> Currency ($)</label>
+	</div>
+    <p class="quiet" style="text-align:right;">Problem processing the data? Try <a href="javascript:void(0);" class="showdebug">debugging it.</a></p>
     <div style="padding-left:5px; border-left:1px solid #999;" id="debug">
     <!-- eventually delete this from here  -->
 		<h4>Data Labels <span class="quiet small">Enter comma separated value.</span></h4>
@@ -95,11 +100,10 @@
 		<h4>Data Values <span class="quiet small">Enter comma separated value, only numbers.</span></h4>
 			Name of data: <input type="text" id="chartdataname" value=""></input><br/>
 			<input type="text" id="chartdata" value=""></input>
-			<div class="datatype-select"><!-- eventually change -->
-				<input type="radio" name="datatype" value="num" id="num" checked="checked" /> <label for="num"> Number</label>
-				<input type="radio" name="datatype" value="pct" id="pct" /> <label for="pct"> Percentage (%)</label>
-				<input type="radio" name="datatype" value="dol" id="dol" /> <label for="dol"> Currency ($)</label> (Those do nothing at the moment)<br/>
-
+			
+		<div class="datatype-select">Formatted data: 
+				<br/>
+			<input type="text" id="chartformatteddata" value=""></input>
 		</div>
 	 <!-- to here  -->
 	 </div>

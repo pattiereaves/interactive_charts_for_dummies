@@ -4,9 +4,9 @@ $(document).ready(function(){
 				
 		//google.setOnLoadCallback(drawChart); is needed for embed code, but to have it on the page, I just need drawChart();
 	
-		var previewTemplateHTML ='<script type="text/javascript">function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("prevDiv"));chart.draw(data, {<%= chartOption %>});}drawChart();</s'+'cript><div id="prevDiv"></div>';
+		var previewTemplateHTML ='<script type="text/javascript">function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var dataformatted = [<%= chartFormattedData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);data.setFormattedValue(i, 1, dataformatted[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("prevDiv"));chart.draw(data, {<%= chartOption %>});}drawChart();</s'+'cript><div id="prevDiv"></div>';
 		
-		var embedTemplateHTML ='&#60;script type="text/javascript" src="https://www.google.com/jsapi">&#60;/s'+'cript>&#60;script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});google.setOnLoadCallback(drawChart);function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("<%= chartDivId %>"));chart.draw(data, {<%= chartOption %>});}&#60;/s'+'cript>&#60;div id="<%= chartDivId %>">&#60;/div>';
+		var embedTemplateHTML ='&#60;script type="text/javascript" src="https://www.google.com/jsapi">&#60;/s'+'cript>&#60;script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});google.setOnLoadCallback(drawChart);function drawChart() {var data = new google.visualization.DataTable();var labels = [<%= chartLabels %>];var datavalues = [<%= chartData %>];var dataformatted = [<%= chartFormattedData %>];var labelname = "<%= chartLabelsName %>";var datavaluename = "<%= chartDataName %>";data.addColumn("string", labelname);data.addColumn("number", datavaluename);data.addRows(labels.length);for (var i = 0; i  < labels.length; ++i) {data.setValue(i, 0, labels[i]);data.setValue(i, 1, datavalues[i]);data.setFormattedValue(i, 1, dataformatted[i]);}var chart = new google.visualization.<%= chartType %>(document.getElementById("<%= chartDivId %>"));chart.draw(data, {<%= chartOption %>});}&#60;/s'+'cript>&#60;div id="<%= chartDivId %>">&#60;/div>';
 	
 		var wantTitle		= $('input[name=wanttitle]:checked').val();
 		var chartTitle 		= $('#title').val();
@@ -38,6 +38,8 @@ $(document).ready(function(){
 		var chartLabels		= $('#chartlabels').val();
 		var chartDataName		= $('#chartdataname').val();
 		var chartLabelsName		= $('#chartlabelsname').val();
+		var chartFormattedData	= $('#chartformatteddata').val();
+		
 		
 		var chartDivId		= $('#chartdivid').val();
 		
@@ -67,6 +69,7 @@ $(document).ready(function(){
 			'chartData': chartData,
 			'chartLabelsName': chartLabelsName,
 			'chartDataName': chartDataName,
+			'chartFormattedData': chartFormattedData,
 			'chartType': chartType,
 			'chartDivId': chartDivId,
 			'chartOption': chartOption, 
@@ -124,18 +127,6 @@ $(document).ready(function(){
 	$("#data-error").hide();
 
 });
-
-
-function numberFormat(nStr){
-     nStr += '';
-     x = nStr.split('.');
-     x1 = x[0];
-     x2 = x.length > 1 ? '.' + x[1] : '';
-     var rgx = /(\d+)(\d{3})/;
-     while (rgx.test(x1))
-       x1 = x1.replace(rgx, '$1' + ',' + '$2');
-     return x1 + x2;
-}
 
 function rand(length,current){
 	current = current ? current : '';

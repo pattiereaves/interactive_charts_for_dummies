@@ -62,10 +62,12 @@ function processData() {
 	// [1] is data values
 	label_data = makeQuoteString(cleaned_data[0]);
 	datavalue_data = makeNonQuoteString(cleaned_data[1]);
+	formatted_data = makeFormatted(cleaned_data[1]);
     $('#chartlabels').attr("value",label_data[1]);
     $('#chartdata').attr("value",datavalue_data[1]);
     $('#chartlabelsname').attr("value",label_data[0]);
     $('#chartdataname').attr("value",datavalue_data[0]);
+    $('#chartformatteddata').attr("value",formatted_data[1])
 }
 
 
@@ -89,6 +91,42 @@ function makeQuoteString(inputArray) {
 	return val;
 }
 
+
+function makeFormatted(inputArray) {
+	dataType = $('input[name=datatype]:checked').val();
+	// returns same thing as NonQuote string except numbers are formatted (thousand comma) and $ or % attached...
+	var val = new Array('','"');
+	if (inputArray !== undefined) {
+	var lastnum = inputArray.length -1;
+		   for(i=0; i < inputArray.length; i++) {
+		   		if (i==0){ val[0] = inputArray[i]; }
+		   		else { 
+		   		//add $ if currency
+		   		if (dataType=="dol") {val[1] += '$';}
+		   		val[1] += numberFormat(inputArray[i]);
+		   		//add % if percent
+		   		if (dataType=="pct") {val[1] += '%';}
+		   			if (i == lastnum) {
+		   			} else {
+		   			val[1] += '","';
+		   			}
+		   		}
+		   }
+	val[1] +='"';
+	}
+	return val;
+}
+
+function numberFormat(nStr){
+     nStr += '';
+     x = nStr.split('.');
+     x1 = x[0];
+     x2 = x.length > 1 ? '.' + x[1] : '';
+     var rgx = /(\d+)(\d{3})/;
+     while (rgx.test(x1))
+       x1 = x1.replace(rgx, '$1' + ',' + '$2');
+     return x1 + x2;
+}
 
 function makeNonQuoteString(inputArray) {
 	// returns two strings, label and values made into strings with quotation like "Monday","Tuesday"...
