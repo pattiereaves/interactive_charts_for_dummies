@@ -83,19 +83,19 @@ font-size: 16px;
 font-weight: bold;
 }
 input#chartwidth, input#chartheight {
-	width:33%;
-}
-input#minv, input#maxv {
 	width:30%;
 }
-input#chartwidth  {
+input#minv, input#maxv {
+	width:25%;
+}
+input#chartwidth, input#minv {
 	margin-right: 5%;
 }
 input#chartlabelsname, input#chartdataname {
-	width:40%;margin-left: 5%;
+	width:35%;margin-left: 5%;
 }
 input.colorpicker {
-	width:30%;
+	width:25%;
 }
 
 input.title-colorpicker {
@@ -117,7 +117,9 @@ a.generate {
 h2 {
 	border-bottom:1px solid #999;
 }
-
+label {
+	font-weight: normal;
+}
 
 /*** STYLES FOR BUTTONS ***/
 input#renderChart {

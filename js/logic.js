@@ -72,6 +72,7 @@ function processData() {
 function makeQuoteString(inputArray) {
 	// returns two strings, label and values made into strings with quotation like "Monday","Tuesday"...
 	var val = new Array('','"');
+	if (inputArray !== undefined) {
 	var lastnum = inputArray.length -1;
 		   for(i=0; i < inputArray.length; i++) {
 		   		if (i==0){ val[0] = inputArray[i]; }
@@ -84,6 +85,7 @@ function makeQuoteString(inputArray) {
 		   		}
 		   }
 	val[1] +='"';
+	}
 	return val;
 }
 
@@ -91,14 +93,15 @@ function makeQuoteString(inputArray) {
 function makeNonQuoteString(inputArray) {
 	// returns two strings, label and values made into strings with quotation like "Monday","Tuesday"...
 	var val = new Array('','');
-	var lastnum = inputArray.length -1;
+	var numError = false;
+	if (inputArray == undefined) {numError = true;}
+	else {var lastnum = inputArray.length -1;
 		   for(i=0; i < inputArray.length; i++) {
 		   		if (i==0){ val[0] = inputArray[i]; }
 		   		else { 
 		   		  re = /^[0-9.]*$/;
 				  if (!re.test(inputArray[i])) {
-					$('#data-error').html('Data value contains an invalid character. Only numbers are allowed in column two. Try debugging the data processing below.');
-					$('#data-error').css('display', 'block');
+					numError = true;
 				  } else {
 			   		val[1] += inputArray[i];
 			   			if (i == lastnum) {
@@ -108,7 +111,14 @@ function makeNonQuoteString(inputArray) {
 		   			}
 		   		}
 		   }
-		   
+	}
+	if (numError) {	
+		$("#data-processed").hide();
+		$("#data-error").show("slow");
+	} else {
+		$("#data-processed").show("slow");
+		$("#data-error").hide();		
+	}
 	return val;
 }
 

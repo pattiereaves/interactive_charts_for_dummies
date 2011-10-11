@@ -47,6 +47,20 @@ $(document).ready(function(){
 			chartOption += 'title: "' + chartTitle + '", titleTextStyle: {fontSize: '+ chartTitleSize +', color: "#' + chartTitleColor + '"}, ';
 		}
 		chartOption += 'width: '+ chartWidth +', height: '+ chartHeight + ', backgroundColor: "#'+ chartColor +'", colors:["#'+ chartBarColor +'"], legend: "'+ chartLegend +'"';
+			
+			// Min/Max values
+			// for horizontal, hAxis
+			// fever and vertical, vAxis:{minValue:"0", maxValue:"10"}
+		var chartMin	= $('#minv').val();
+		var chartMax	= $('#maxv').val();
+		var minmax = "";
+			if (chartType == 'BarChart')
+				{ minmax += 'hAxis: {minValue:"';}
+			else { minmax += 'vAxis: {minValue:"';}
+			minmax += chartMin + '", maxValue:"' + chartMax + '"}';
+		
+		//add that to chartOption
+			chartOption += ', ' + minmax; 
 
 		var chartDataObject = {
 			'chartLabels': chartLabels,
@@ -102,9 +116,13 @@ $(document).ready(function(){
 	});
 	
 	$("#debug").hide();
-	$('#showdebug').click(function() {
+	$('.showdebug').click(function() {
   		$("#debug").toggle("slow");
 	});
+	
+	$("#data-processed").hide();
+	$("#data-error").hide();
+
 });
 
 
