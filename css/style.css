@@ -58,6 +58,10 @@ h1{
 /*            MAIN CONTENT            */
 /**************************************/
 
+h4 {
+	color: #666; 
+	}
+
 textarea {
 width: 100%;
 font-family: Consolas, "Monaco";
@@ -80,6 +84,9 @@ font-weight: bold;
 }
 input#chartwidth, input#chartheight {
 	width:33%;
+}
+input#minv, input#maxv {
+	width:30%;
 }
 input#chartwidth  {
 	margin-right: 5%;
@@ -117,10 +124,10 @@ input#renderChart {
   display: inline-block;
   float: left;
   margin:0 0.583em 0.667em 0;
-  padding:5px 10px 5px 7px;   /*** Links ***/
-  border:1px solid #dedede;
-  border-top:1px solid #eee;
-  border-left:1px solid #eee;
+  padding:5px 14px 5px 14px;   /*** Links ***/
+  border:1px solid #529214;
+  border-top:1px solid #C6D880;
+  border-left:1px solid #C6D880;
   font-family:"Liberation Sans", Helvetica, Arial, sans-serif;
 	font-size: 18px;
   line-height:130%;
@@ -129,12 +136,20 @@ input#renderChart {
   color:#529214; 
   cursor:pointer;
   background-color:#f5f5f5;
+  box-shadow: 1px 1px 3px #aaa;
 }
-input#renderChart:hover { background-color:#E6EFC2; border:1px solid #C6D880; color:#529214; }
+input#renderChart:hover { background-color:#E6EFC2; border:1px solid #010; color:#529214; border-top:1px solid #529214; border-left:1px solid #529214;}
 input#renderChart:active { background-color:#529214; border:1px solid #529214; color:#fff; }
 
 
 .renderbutton { min-height:50px; }
+
+
+
+
+/* forms  */
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus { border-color: #888; outline: 2px solid #5588ee; background:#ffffe6}
+
 
 /**************************************/
 /*               FOOTER               */

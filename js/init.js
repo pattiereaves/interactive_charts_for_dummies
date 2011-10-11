@@ -98,12 +98,12 @@ $(document).ready(function(){
 
 	$("#imgchart").hide();
 	$('#showimgchart').click(function() {
-  		$("#imgchart").show("slow");
+  		$("#imgchart").toggle("slow");
 	});
 	
 	$("#debug").hide();
 	$('#showdebug').click(function() {
-  		$("#debug").show("slow");
+  		$("#debug").toggle("slow");
 	});
 });
 
