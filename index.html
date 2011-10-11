@@ -30,7 +30,7 @@
         <p>Convert your spreadsheet data into <a href="http://code.google.com/apis/chart/image/docs/making_charts.html"> google chart</a>.  A <a href="http://hackshackers.com/hacking-at-ona11/">Hacks/Hackers Hack Day @ ONA2011</a> project.<br />
         <strong>How to format your data</strong>: For Example, 
         <a href="https://docs.google.com/spreadsheet/ccc?key=0Apvvlouo3eMgdFZWeUNPQ1pjYXJINmtSOW9YZ09ISEE&hl=en_US" target="_blank">this spreadsheet</a> will produce <a href="examples/example-unemployment.html" target="_blank">this</a>, <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdG50R3ZCWWZnMUNOeVB1QWM3ai1tamc&hl=en_US#gid=0" target="_blank">this spreadsheet</a> will produce <a href="examples/example-beckett-era.html" target="_blank">this</a>, and  <a href="https://docs.google.com/a/daigofujiwara.com/spreadsheet/ccc?key=0Apvvlouo3eMgdDZOLUdRNlh5dkRvQjRxVzM0UkNGQmc&hl=en_US#gid=0" target="_blank">this spreadsheet</a> will produce <a href="examples/example-usmedian-income.html" target="_blank">this</a>.<br/>
-        dotcloud URL: <a href="http://interactivechartsfordummies-pazzypunk.dotcloud.com/">http://interactivechartsfordummies-pazzypunk.dotcloud.com/</a>, and shortened at: <a href="http://j.mp/interactivecharts">j.mp/interactivecharts</a>. Check out the <a href="https://github.com/pazzypunk/interactive_charts_for_dummies">git repo</a>. <a href="https://docs.google.com/document/d/1vekp8TzdLXnKgNC4k9BXE6sQIT3ypIWWhqOh0MDQLQ0/edit?hl=en_US">Google doc</a> memo</p>
+        <a href="http://interactivechartsfordummies-pazzypunk.dotcloud.com/">pazzypunk's dotcloud URL</a>, <a href="http://charts.daigofujiwara.com/">daigo's mirror site URL</a> and shortened at: <a href="http://bit.ly/charttool">bit.ly/charttool</a>. Check out the <a href="https://github.com/pazzypunk/interactive_charts_for_dummies">github repo <img src="images/github.png" alt="github repo" width="16" height="16" /></a>. <a href="https://docs.google.com/document/d/1vekp8TzdLXnKgNC4k9BXE6sQIT3ypIWWhqOh0MDQLQ0/edit?hl=en_US">Google doc</a> memo</p>
 
         <p><!-- AddThis Button BEGIN -->
 		<div class="addthis_toolbox addthis_default_style ">
@@ -92,7 +92,7 @@
 				<input type="radio" name="datatype" value="dol" id="dol" onchange="processData()" /> <label for="dol"> Currency ($)</label>
 	</div>
     <p class="quiet" style="text-align:right;">Problem processing the data? Try <a href="javascript:void(0);" class="showdebug">debugging it.</a></p>
-    <div style="padding-left:5px; border-left:1px solid #999;" id="debug">
+    <div class="option" style="border-left:1px solid #999;" id="debug">
     <!-- eventually delete this from here  -->
 		<h4>Data Labels <span class="quiet small">Enter comma separated value.</span></h4>
 			Name labels (i.e. Year, Month...): <input type="text" id="chartlabelsname" value=""></input><br/>
@@ -108,7 +108,7 @@
 	 <!-- to here  -->
 	 </div>
     <h2>Chart options</h2>
-	    <div class="type" >
+	    <div class="type option" >
 			<h4>Type</h4>
 			<div><input type="radio" name="charttype" value="BarChart" id="horitype" checked="checked" /> <label for="horitype"> <img src="images/hori-type.png" width="16" height="12"> Horizontal Bar</label>
 			<input type="radio" name="charttype" value="ColumnChart" id="verttype" /> <label for="verttype"><img src="images/vert-type.png" width="16" height="12"> Vertical Bar</label>
@@ -117,7 +117,7 @@
 			</div>
 		</div>	
 
-        <div class="size" id="size" name="size">
+        <div class="size option" id="size" name="size">
 			<h4>Size <span class="quiet small">(in pixel)</span></h4>
 			<label for="chartwidth">Width</label>
 			<input type="text" name="chartwidth" id="chartwidth" length="5" size="8" value="330" onclick="javascript:this.focus();this.select();">
@@ -125,7 +125,7 @@
 			<input type="text" name="chartheight" id="chartheight" length="5" size="8" value="300" onclick="javascript:this.focus();this.select();">
 		</div>
 		
-		<div class="color" id="chartcolor" name="chartcolor">
+		<div class="color option" id="chartcolor" name="chartcolor">
 			<h4>Color</h4>
 			<!-- <label for="canvas-color">Canvas background color</label>
 			<input type="text" size="40" id="canvas-color" name="canvas-color" class="colorpicker"></input><br/> -->
@@ -133,11 +133,11 @@
 			<label for="chart-color">Background </label>
 			<input type="text" size="40" id="chart-color" name="chart-color" class="colorpicker"></input><br/>
 
-			<label for="bar-color">Bar </label>
+			<label for="bar-color">Bar or line </label>
 			<input type="text" size="40" id="bar-color" name="bar-color" class="bar-colorpicker colorpicker"></input> <a href="javascript:void(0);" id="changeBlue">Blue</a>, <a href="javascript:void(0);" id="changeRed">Dark Red</a>
 		</div>
 
-		<div>
+		<div class="maxmin option">
 				<h4>Max/Min <span class="quiet small">For zero baseline, set minValue to "0". Default is "automatic".</span></h4>	
 		<!-- hAxis vAxis:{minValue:"0", maxValue:"10"} -->
 		<label for="minv">minValue</label>
@@ -146,7 +146,7 @@
 			<input type="text" name="maxv" id="maxv" length="5" size="8" value="automatic" onclick="javascript:this.focus();this.select();">
 		</div>
 		
-		<div class="legend" id="chartlegend">
+		<div class="legend option" id="chartlegend">
 			<h4>Legend position</h4>
 			<label for="legend-position"></label>
 			<select id="legend-position">
@@ -157,7 +157,7 @@
 			</select>	
 		</div>
 		
-		<div class="color" id="chartcolor" name="chartcolor">
+		<div class="did option" id="chartcolor" name="chartcolor">
 			<h4>Give unique "id" for html div tag</h4>
 			<input type="text" size="40" id="chartdivid" name="chartdivid" value="chart_div"></input><br/>
 			<p>Change this if you plan to have multiple charts on one page. <a href="javascript:void(0);" id="randomchartdivid">Randomize</a></p>
